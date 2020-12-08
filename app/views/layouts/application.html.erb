@@ -9,7 +9,24 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
+  <header>
+    <h1><%= link_to "MinpakuApp", root_path %></h1>
+    <h1></h1> #エリア検索フォーム
+    <h1></h1> #フリーワード検索フォーム
+    <div class="menu">
+      <ul>
+          <li><%= link_to "ルーム登録", "#" %></li>
+          <li><%= link_to "予約済みルーム一覧", "#" %></li>
+          <li><%= link_to "登録済みルーム一覧", "#" %></li>
+          <li><%= link_to "設定", "#" %></li>
+          <li><%= link_to "ログアウト", "#" %></li>
+      </ul>
+    </div>
+  </header>
+
   <body>
     <%= yield %>
   </body>
+  
+  <footer></footer> #フッターの色付け
 </html>
