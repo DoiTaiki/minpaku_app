@@ -6,10 +6,10 @@ Rails.application.routes.draw do
   get 'users/account', to: 'users#show'
   resource :user do
     collection do
-      get 'users/sign_in', to: 'users#sign_in'
-      post 'users/sign_in', to: 'users#session_create'
-      get 'users/profile'
-      post 'users/logout'
+      get 'user/sign_in', to: 'users#sign_in'
+      post 'user/sign_in', to: 'users#session_create'
+      get 'user/profile'
+      post 'user/logout'
     end
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

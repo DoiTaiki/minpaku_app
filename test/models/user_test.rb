@@ -75,11 +75,6 @@ class UserTest < ActiveSupport::TestCase
     assert_not @user.valid?
   end
   
-    test "self_introduction should be present" do
-    @user.self_introduction = " "
-    assert_not @user.valid?
-  end
-  
   test "self_introduction should not be too long" do
     @user.self_introduction = "a" * 256
     assert_not @user.valid?
