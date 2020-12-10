@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      log_in @user
       flash[:success] = "登録完了しました！"
       redirect_to root_path
     else
@@ -29,12 +30,22 @@ class UsersController < ApplicationController
   end
   
   def session_create
+    user = User.find_by(email: params[:session][:email].downcase)
+    if user&.authenticate(params[:session][:password])
+      log_in user
+      redirect_to root_path
+    else
+      flash.now[:danger] = 'Invalid email/password combination'
+      render 'sign_in'
+    end
   end
   
   def profile
   end
   
   def logout
+    log_out
+    redirect_to root_path
   end
   
   private
