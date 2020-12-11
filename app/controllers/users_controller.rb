@@ -30,9 +30,10 @@ class UsersController < ApplicationController
   end
   
   def session_create
-    user = User.find_by(email: params[:session][:email].downcase)
-    if user&.authenticate(params[:session][:password])
-      log_in user
+    @user = User.find_by(email: params[:session][:email].downcase)
+    if @user&.authenticate(params[:session][:password])
+      log_in @user
+      params[:session][:remember_me] == '1' ? remember(@user) : forget(@user)
       redirect_to root_path
     else
       flash.now[:danger] = 'Invalid email/password combination'
@@ -44,7 +45,7 @@ class UsersController < ApplicationController
   end
   
   def logout
-    log_out
+    log_out if logged_in?
     redirect_to root_path
   end
   
