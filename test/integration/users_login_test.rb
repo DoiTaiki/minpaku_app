@@ -32,7 +32,7 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     #assert_select "a[href=?]", new_room_path
     #assert_select "a[href=?]", reservations_path
     #assert_select "a[href=?]", rooms_path
-    #assert_select "a[href=?]", account_user_path
+    assert_select "a[href=?]", user_account_path
     assert_select "a[href=?]", logout_user_path
     delete logout_user_path
     assert_not is_logged_in?
@@ -44,7 +44,7 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     #assert_select "a[href=?]", new_room_path, count: 0
     #assert_select "a[href=?]", reservations_path, count: 0
     #assert_select "a[href=?]", rooms_path, count:0
-    #assert_select "a[href=?]", account_user_path, count: 0
+    assert_select "a[href=?]", user_account_path, count: 0
     assert_select "a[href=?]", logout_user_path, count: 0
   end
   

@@ -4,6 +4,12 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end
+  
+  def setup
+    @admin = users(:michael)
+    @non_admin = users(:archer)
+  end
+  
   test "layouts links" do
     get root_path
     assert_template 'static_pages/home'

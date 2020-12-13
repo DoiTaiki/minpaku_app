@@ -15,10 +15,15 @@
               <li><%= link_to "ルーム登録", "#" %></li>
               <li><%= link_to "予約済みルーム一覧", "#" %></li>
               <li><%= link_to "登録済みルーム一覧", "#" %></li>
-              <li><%= link_to "設定", "#" %></li>
+              <li><%= link_to "アカウント情報", user_account_path %></li>
               <li>
                 <%= link_to "ログアウト", logout_user_path, method: :delete %>
               </li>
+              <% if !current_user.admin? %>
+                <li><%= link_to "アカウントの削除", user_path, method: :delete, data: { confirm: "本当に削除しますか?" } %></li>
+              <% else %>
+                <li><%= link_to "全てのユーザー", all_users_user_path %></li>
+              <% end %>
           </ul>
         </li>
       <% else %>
