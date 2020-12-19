@@ -83,4 +83,18 @@ class UserTest < ActiveSupport::TestCase
   test "authenticated? should return false for a user with nil digest" do
     assert_not @user.authenticated?('')
   end
+  
+  test "associated rooms should be destroyed" do
+    @user.save
+    room = @user.rooms.build(name: "A city's seaside", 
+                        room_introduction: "beautiful seaside",
+                        price: 2000,
+                        address: "A city 1-1-1",
+                        )
+    room.image.attach(io: File.open('./test/fixtures/files/images/lake-192990_640.jpg'), filename: 'lake-192990_640.jpg')
+    room.save
+    assert_difference 'Room.count', -1 do
+      @user.destroy
+    end
+  end
 end

@@ -15,5 +15,10 @@ Rails.application.routes.draw do
       get 'all_users'
     end
   end
+  resources :rooms, only: [:new, :create, :show, :edit, :update, :delete] do
+    collection do
+      get 'posts'
+    end
+  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

@@ -1,0 +1,7 @@
+<tr id="room-<%= room.id %>">
+    <td><%= link_to image_tag(room.display_image), room_path(room.id) %></td>
+    <td><%= link_to room.name, room_path(room.id) %></td>
+    <td><%= room.room_introduction %></td>
+    <td><%= room.price %></td>
+    <td><%= room.created_at %></td>
+</tr>

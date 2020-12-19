@@ -1,0 +1,43 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: A
+  room_introduction: aaaaa
+  price: 1000
+  address: A city
+  user: michael
+  created_at: <%= 10.minutes.ago %>
+
+two:
+  name: B
+  room_introduction: bbbbb
+  price: 2000
+  address: B city
+  user: michael
+  created_at: <%= 3.hours.ago %>
+
+three:
+  name: C
+  room_introduction: ccccc
+  price: 3000
+  address: C city
+  user: michael
+  created_at: <%= 2.hours.ago %>
+
+most_recent:
+  name: D
+  room_introduction: ddddd
+  price: 4000
+  address: D city
+  user: michael
+  created_at: <%= Time.zone.now %>
+
+#<% 50.times do |n| %>
+#property_<%= n %>:
+  #name: <%= Faker::Lorem.sentence(word_count: 1) %>
+  #room_introduction: <%= Faker::Lorem.sentence(word_count: 1) %>
+  #price: 1000
+  #address: <%= Faker::Lorem.unique.sentence(word_count: 1) %> city
+  #user: michael
+  #created_at: <%= 42.days.ago %>
+#<% end %>

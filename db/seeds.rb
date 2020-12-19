@@ -22,3 +22,18 @@ User.create!(name:  "Example User",
                password:              password,
                password_confirmation: password)
 end
+
+user = User.first
+50.times do
+  address = Faker::Lorem.unique.sentence(word_count: 1) + "city"
+  name = "#{address}'s seaside"
+  room_introduction = Faker::Lorem.sentence(word_count: 1)
+  price = 2000
+  room = user.rooms.build( name: name, 
+                           room_introduction: room_introduction,
+                           price: price,
+                           address: address
+                           )
+  room.image.attach(io: File.open('./test/fixtures/files/images/lake-192990_640.jpg'), filename: 'lake-192990_640.jpg')
+  room.save!
+end
