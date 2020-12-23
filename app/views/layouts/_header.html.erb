@@ -1,9 +1,21 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
   <nav>
     <ul class="nav navbar-nav navbar-left">
-      <%= link_to "MinpakuApp", root_path %>
-      <%# <li>エリア検索フォーム</li> %>
-      <%# <li>フリーワード検索フォーム</li> %>
+      <li><%= link_to "MinpakuApp", root_path %></li>
+      <li>
+      <%= form_with url: search_rooms_path, method: :get, local: true, class: "navbar-form input-group" do |f| %>
+        <%= f.text_field :keyword, placeholder: "エリア", class: 'form-control' %>
+        <%= f.hidden_field :column, value: "address" %>
+        <%= f.submit :search, class: "form-control"%>
+      <% end %>
+      </li>
+      <li>
+      <%= form_with url: search_rooms_path, method: :get, local: true, class: "navbar-form input-group" do |f| %>
+        <%= f.text_field :keyword, placeholder: "キーワード", class: 'form-control' %>
+        <%= f.hidden_field :column, value: "room_introduction" %>
+        <%= f.submit :search, class: "form-control"%>
+      <% end %>
+      </li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <% if logged_in? %>
@@ -12,9 +24,9 @@
             <%= gravatar_for(current_user, size: 40) %>
           </a>
           <ul class="dropdown-menu">
-              <li><%= link_to "ルーム登録", "#" %></li>
+              <li><%= link_to "ルーム登録", new_room_path %></li>
               <li><%= link_to "予約済みルーム一覧", "#" %></li>
-              <li><%= link_to "登録済みルーム一覧", "/rooms/posts" %></li>
+              <li><%= link_to "登録済みルーム一覧", posts_rooms_path %></li>
               <li><%= link_to "アカウント情報", user_account_path %></li>
               <li>
                 <%= link_to "ログアウト", logout_user_path, method: :delete %>

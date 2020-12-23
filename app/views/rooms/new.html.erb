@@ -1,2 +1,7 @@
-<h1>Rooms#new</h1>
-<p>Find me in app/views/rooms/new.html.erb</p>
+<% provide(:button_text, "部屋を登録する") %>
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <%= render "shared/room_form" %>    
+        <p><%= link_to "ホーム画面に戻る", root_path %></p>
+    </div>
+</div>

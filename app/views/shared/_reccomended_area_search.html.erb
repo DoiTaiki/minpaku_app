@@ -1,0 +1,8 @@
+<li class="reccomended-area">
+    <%= link_to search_rooms_path(keyword: yield(:area), column: "address") do %>
+        <div class="area-img img-responsive">
+            <%= image_tag yield(:image_name), size: '400x300' %>
+            <p class="area-character"><%= yield(:area) %></p> <%# 画像と重ねる%>
+        </div>
+    <% end %>
+</li>

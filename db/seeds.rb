@@ -29,11 +29,76 @@ user = User.first
   name = "#{address}'s seaside"
   room_introduction = Faker::Lorem.sentence(word_count: 1)
   price = 2000
-  room = user.rooms.build( name: name, 
-                           room_introduction: room_introduction,
-                           price: price,
-                           address: address
-                           )
-  room.image.attach(io: File.open('./test/fixtures/files/images/lake-192990_640.jpg'), filename: 'lake-192990_640.jpg')
-  room.save!
+  user.rooms.create!( name: name, 
+                      room_introduction: room_introduction,
+                      price: price,
+                      address: address,
+                      image: {io: File.open('./test/fixtures/files/images/lake-192990_640.jpg'), filename: 'lake-192990_640.jpg'}
+                      )
 end
+
+address = "東京都青梅市"
+name = "#{address}の駅近"
+room_introduction = "駅近です。新築です。"
+price = 2000
+user.rooms.create!( name: name, 
+                    room_introduction: room_introduction,
+                    price: price,
+                    address: address,
+                    image: {io: File.open('./test/fixtures/files/images/japan-1730668_640.jpg'), filename: 'japan-1730668_640.jpg'}
+                    )
+
+address = "東京都新宿区"
+name = "#{address}の駅近"
+room_introduction = "駅近です。都会です。"
+price = 2000
+user.rooms.create!( name: name, 
+                    room_introduction: room_introduction,
+                    price: price,
+                    address: address,
+                    image: {io: File.open('./test/fixtures/files/images/tokyo-4548550_640.jpg'), filename: 'tokyo-4548550_640.jpg'}
+                    )
+
+address = "大阪府大阪市"
+name = "#{address}の駅近"
+room_introduction = "駅近です。都会です。"
+price = 2000
+user.rooms.create!( name: name, 
+                    room_introduction: room_introduction,
+                    price: price,
+                    address: address,
+                    image: {io: File.open('./test/fixtures/files/images/houston-3302007_640.jpg'), filename: 'houston-3302007_640.jpg'}
+                    )
+
+address = "大阪府堺市"
+name = "#{address}の市街地"
+room_introduction = "市街地です。駅近です。観光地です。"
+price = 2000
+user.rooms.create!( name: name, 
+                    room_introduction: room_introduction,
+                    price: price,
+                    address: address,
+                    image: {io: File.open('./test/fixtures/files/images/houston-3302007_640.jpg'), filename: 'houston-3302007_640.jpg'}
+                    )
+
+address = "京都府宇治市"
+name = "#{address}の市街地"
+room_introduction = "市街地です。観光地です。"
+price = 2000
+user.rooms.create!( name: name, 
+                    room_introduction: room_introduction,
+                    price: price,
+                    address: address,
+                    image: {io: File.open('./test/fixtures/files/images/house-5632318_640.jpg'), filename: 'house-5632318_640.jpg'}
+                    )
+
+address = "北海道札幌市"
+name = "#{address}の市街地"
+room_introduction = "市街地です。観光地です。雪降ります。"
+price = 2000
+user.rooms.create!( name: name, 
+                    room_introduction: room_introduction,
+                    price: price,
+                    address: address,
+                    image: {io: File.open('./test/fixtures/files/images/japan-3971122_640.jpg'), filename: 'japan-3971122_640.jpg'}
+                    )

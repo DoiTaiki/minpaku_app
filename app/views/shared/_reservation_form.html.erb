@@ -1,0 +1,13 @@
+<%= form_with model: @reservation, local: true do |f| %>
+  <%= render "shared/error_messages", object: f.object %>
+  <%= f.label :start_date, "開始日" %>
+  <%= f.date_select :start_date, class: 'form-control' %>
+  
+  <%= f.label :end_date, "終了日" %>
+  <%= f.date_select :end_date, class: 'form-control' %>
+  
+  <%= f.label :number_of_people, "人数" %>
+  <%= f.number_field :number_of_people, class: 'form-control' %>
+  
+  <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+<% end %>

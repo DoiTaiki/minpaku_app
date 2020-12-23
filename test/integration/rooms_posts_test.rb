@@ -8,13 +8,12 @@ class RoomsPostsTest < ActionDispatch::IntegrationTest
   def setup
     @user = users(:michael)
     31.times do |n|
-      @room = @user.rooms.build(name: Faker::Lorem.sentence(word_count: 1), 
-                                room_introduction: Faker::Lorem.sentence(word_count: 1),
-                                price: 1000,
-                                address: Faker::Lorem.unique.sentence(word_count: 1) + "city",
-                                )
-      @room.image.attach(io: File.open('./test/fixtures/files/images/lake-192990_640.jpg'), filename: 'lake-192990_640.jpg')
-      @room.save!
+      @room = @user.rooms.create!(name: Faker::Lorem.sentence(word_count: 1), 
+                                  room_introduction: Faker::Lorem.sentence(word_count: 1),
+                                  price: 1000,
+                                  address: Faker::Lorem.unique.sentence(word_count: 1) + "city",
+                                  image: {io: File.open('./test/fixtures/files/images/lake-192990_640.jpg'), filename: 'lake-192990_640.jpg'}
+                                  )
     end
   end
   

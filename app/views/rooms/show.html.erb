@@ -1,2 +1,22 @@
-<h1>Rooms#show</h1>
-<p>Find me in app/views/rooms/show.html.erb</p>
+<%= image_tag(@room.display_image) %>
+
+<div class="room-user">
+  <%= gravatar_for @user %>
+  <%= @user.name %>
+  <%= @user.self_introduction %>
+</div>
+
+<div class="room-introduction">
+  <%= @room.room_introduction %>
+</div>
+
+<div class=reservation-form>
+  <%= "¥#{@room.price}/日" %>
+  <% provide(:button_text, "予約する") %>
+  <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+          <%#<%= render "shared/reservation_form" %>    
+          <p><%= link_to "ホーム画面に戻る", root_path %></p>
+      </div>
+  </div>
+</div>

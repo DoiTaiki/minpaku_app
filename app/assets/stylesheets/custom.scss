@@ -5,6 +5,7 @@
 
 body {
   padding-top: 60px;
+  height: 100%;
 }
 
 section {
@@ -140,4 +141,43 @@ input {
 /*table*/
 th {
   text-align:center;
+}
+
+.home {
+  .top_image {
+    position: relative;
+    text-align: center;
+    width: 100%;
+    .search_form {
+      position: absolute;
+      width: 30%;
+      left: 35%;
+      top: 20%;
+    }
+    .message {
+      position: absolute;
+      left: 35%;
+      top: 10%;
+      color: #fff;
+      font-size: 20px;
+    }
+  }
+  ul {
+    list-style: none;
+    text-align: center;
+    li {
+      display: inline-block;
+      .area-img {
+        position: relative;
+        width: 400px;
+        .area-character {
+          position: absolute;
+          left: 45%;
+          bottom: 50px;
+          color: #fff;
+          font-size: 30px;
+        }
+      }
+    }
+  }
 }

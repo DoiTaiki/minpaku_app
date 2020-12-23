@@ -1,0 +1,35 @@
+<h2>検索結果:
+  <% if @searched_rooms.nil? && @strict_searched_rooms.nil? %>
+    <%= "0件" %>
+  <% elsif !@searched_rooms.nil? && !@strict_searched_rooms.nil? %>
+    <%= "#{@searched_rooms.count.to_i + @strict_searched_rooms.count.to_i}件" %>
+  <% elsif !@searched_rooms.nil? && @strict_searched_rooms.nil? %>
+    <%= "#{@searched_rooms.count}件" %>
+  <% elsif @searched_rooms.nil? && !@strict_searched_rooms.nil? %>
+    <%= "#{@strict_searched_rooms.count}件" %>
+  <% end %>
+</h2>
+
+
+<table class="table" width="100%">
+  <tr>
+    <th width="25%">ルーム画像</th>
+    <th width="10%">ルーム名</th>
+    <th width="45%">ルーム紹介</th>
+    <th width="10%">料金</th>
+    <th width="10%">掲載日時</th>
+  </tr>
+  <div class="search-results-rooms">
+    <% if !@strict_searched_rooms.nil? %>
+      <div class="strict_searched_rooms">
+        <%= render @strict_searched_rooms %>
+      </div>
+    <% end %>
+    <% if !@searched_rooms.nil? %>
+      <div class="searched_rooms">
+        <%= render @searched_rooms %>
+      </div>
+    <% end %>
+  </div>
+</table>
+

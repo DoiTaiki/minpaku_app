@@ -1,32 +1,28 @@
-<div class="top_image">
-    <%# 風景画像 %>
-</div>
-<div class="search_form">
-    <%# エリア検索フォーム%>
-</div>
-<div class="reccomended_area">
-    <%= link_to "#", class: "tokyo_area" do %>
-        <div class="tokyo_image">
-            <%# 東京画像%>
+<div class="home">
+    <div class="top_image">
+        <%= image_tag 'kyoto-1860521_640.jpg', size: '1000x500' %>
+        <div class="search_form">
+          <%= form_with url: search_rooms_path, method: :get, local: true, class: "navbar-form input-group" do |f| %>
+          <%= f.text_field :keyword, placeholder: "例）東京　新宿　-市街", class: 'form-control' %>
+          <%= f.hidden_field :column, value: "address" %>
+          <%= f.submit :search, class: "form-control"%>
+          <% end %>
         </div>
-        <p>東京</p> <%# 画像と重ねる%>
-    <% end %>
-    <%= link_to "#", class: "osaka_area" do %>
-        <div class="osaka_image">
-            <%# 大阪画像%>
-        </div>
-        <p>大阪</p> <%# 画像と重ねる%>
-    <% end %>
-    <%= link_to "#", class: "kyoto_area" do %>
-        <div class="kyoto_image">
-            <%# 京都画像%>
-        </div>
-        <p>京都</p> <%# 画像と重ねる%>
-    <% end %>
-    <%= link_to "#", class: "sapporo_area" do %>
-        <div class="sapporo_image">
-            <%# 札幌画像%>
-        </div>
-        <p>札幌</p> <%# 画像と重ねる%>
-    <% end %>
+        <p class="message">気になるエリアを検索して下さい</p>
+    </div>
+    <ul class="reccomended_area">
+        <% each_area_image_names = [ { area: "東京",
+                                       image_name: "shibuyasky-4768679_640.jpg" },
+                                     { area: "大阪",
+                                       image_name: "japan-4549082_640.jpg" },
+                                     { area: "京都",
+                                       image_name: "architecture-1869398_640.jpg" },
+                                     { area: "札幌",
+                                       image_name: "japan-4917561_640.jpg" } ] %>
+        <% each_area_image_names.each do |each_area_image_name| %>
+            <%= content_for :area, flush: true do %><%= each_area_image_name[:area] %><% end %>　
+            <%= content_for:image_name, flush: true do %><%= each_area_image_name[:image_name] %><% end %>
+            <%= render "shared/reccomended_area_search" %>
+        <% end %>
+    </ul>
 </div>

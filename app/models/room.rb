@@ -16,4 +16,21 @@ class Room < ApplicationRecord
   def display_image
     image.variant(resize_to_limit: [300, 300])
   end
+  
+  def self.search(search_word, column)
+    self.where(["#{column} LIKE ?", "%#{search_word}%"])
+  end
+  
+  #def self.search(search_words, column)
+    #search_array = []
+    #search_words.each do |search_word|
+      #search_array.push("%#{search_word}%")
+    #end
+    #self.where(["#{column} LIKE ?", search_array])
+  #end
+
+  
+  def self.minus_search(search_word, column)
+    self.where(["#{column} NOT LIKE ?", "%#{search_word.delete_prefix('-')}%"])
+  end
 end
