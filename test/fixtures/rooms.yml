@@ -1,44 +1,45 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: A
-  room_introduction: aaaaa
+  name: <%= Faker::Lorem.sentence(word_count: 1) %>
+  room_introduction: <%= Faker::Lorem.sentence(word_count: 1) %>
   price: 1000
-  address: A_city
-  user: michael
+  address: <%= Faker::Lorem.unique.sentence(word_count: 1) %>_city
   created_at: <%= 10.minutes.ago %>
+  user: michael
 
 two:
-  name: B
-  room_introduction: bbbbb
+  name: <%= Faker::Lorem.sentence(word_count: 1) %>
+  room_introduction: <%= Faker::Lorem.sentence(word_count: 1) %>
   price: 2000
-  address: B_city
-  user: michael
+  address: <%= Faker::Lorem.unique.sentence(word_count: 1) %>_city
   created_at: <%= 3.hours.ago %>
+  user: michael
 
 three:
-  name: C
-  room_introduction: ccccc
+  name: <%= Faker::Lorem.sentence(word_count: 1) %>
+  room_introduction: <%= Faker::Lorem.sentence(word_count: 1) %>
   price: 3000
-  address: C_city
-  user: michael
+  address: <%= Faker::Lorem.unique.sentence(word_count: 1) %>_city
   created_at: <%= 2.hours.ago %>
+  user: michael
 
 most_recent:
-  name: D
-  room_introduction: ddddd
+  name: <%= Faker::Lorem.sentence(word_count: 1) %>
+  room_introduction: <%= Faker::Lorem.sentence(word_count: 1) %>
   price: 4000
-  address: D_city
-  user: michael
+  address: <%= Faker::Lorem.unique.sentence(word_count: 1) %>_city
   created_at: <%= Time.zone.now %>
+  user: michael
 
-#<% 31.times do |n| %>
+#データベースに反映されず。(test/integration/rooms_posts_test.rbのassert_not_equal 0, @user.rooms.countで引っ掛かる。)
+#setupに直接記述して、代用
+#<% 30.times do |n|%>
 #property_<%= n %>:
   #name: <%= Faker::Lorem.sentence(word_count: 1) %>
   #room_introduction: <%= Faker::Lorem.sentence(word_count: 1) %>
   #price: 1000
-  #address: <%= Faker::Lorem.unique.sentence(word_count: 1) %> city
-  #image: <%= {io: File.open('./test/fixtures/files/images/lake-192990_640.jpg'), filename: 'lake-192990_640.jpg'} %>
-  #user: michael
+  #address: <%= Faker::Lorem.unique.sentence(word_count: 1) %>_city
   #created_at: <%= 42.days.ago %>
+  #user: michael
 #<% end %>

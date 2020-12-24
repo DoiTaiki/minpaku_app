@@ -46,4 +46,10 @@ Rails.application.configure do
 
   # Raises error for missing translations.
   # config.action_view.raise_on_missing_translations = true
+
+  # インラインジョブ処理でただちにジョブを実行する
+  config.active_job.queue_adapter = :inline
+  
+  # test環境では別のファイルストレージを使う
+  #config.active_storage.service = :local_test
 end

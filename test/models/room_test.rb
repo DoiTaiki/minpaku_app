@@ -11,8 +11,8 @@ class RoomTest < ActiveSupport::TestCase
                               room_introduction: "beautiful seaside",
                               price: 2000,
                               address: "A city 1-1-1",
+                              image: { io: File.open('./test/fixtures/files/images/lake-192990_640.jpg'), filename: 'lake-192990_640.jpg' }
                               )
-    @room.image.attach(io: File.open('./test/fixtures/files/images/lake-192990_640.jpg'), filename: 'lake-192990_640.jpg')
   end
   
   test "should be valid" do

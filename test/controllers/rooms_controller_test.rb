@@ -57,11 +57,11 @@ class RoomsControllerTest < ActionDispatch::IntegrationTest
                         )
   end
   
-  #test "should get index" do
-    #log_in_as(@admin)
-    #get rooms_path
-    #assert_response :success
-  #end
+  test "should get index" do
+    log_in_as(@admin)
+    get rooms_path
+    assert_response :success
+  end
   
   test "should get new" do
     log_in_as(@user)

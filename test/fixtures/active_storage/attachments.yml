@@ -1,0 +1,28 @@
+ones_picture:
+  name: image
+  record: one(Room)
+  blob: ones_picture_blob
+  
+twos_picture:
+  name: image
+  record: two(Room)
+  blob: twos_picture_blob
+  
+threes_picture:
+  name: image
+  record: three(Room)
+  blob: threes_picture_blob
+  
+most_recents_picture:
+  name: image
+  record: most_recent(Room)
+  blob: most_recents_picture_blob
+  
+#データベースに反映されず。(test/integration/rooms_posts_test.rbのassert_not_equal 0, @user.rooms.countで引っ掛かる。)
+#setupに直接記述して、代用
+#<% 30.times do |n| %>
+#picture_<%= n %>:
+  #name: image
+  #record: property_<%= n %>(Room)
+  #blob: picture_<%= n %>_blob
+#<% end %>

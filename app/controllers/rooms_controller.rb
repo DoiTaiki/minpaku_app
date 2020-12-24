@@ -49,7 +49,8 @@ class RoomsController < ApplicationController
   end
 
   def posts
-    @rooms = current_user.rooms.paginate(page: params[:page])
+    @user = current_user
+    @rooms = @user.rooms.paginate(page: params[:page])
   end
   
   def search
