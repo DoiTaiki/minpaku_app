@@ -101,11 +101,4 @@ class UsersController < ApplicationController
       params.require(:user).permit(:name, :email, :password, 
                                     :password_confirmation)
     end
-    
-    def admin_user
-      if !current_user.admin?
-        flash[:danger] = "管理者以外実行できません"
-        redirect_to root_path
-      end
-    end
 end

@@ -11,7 +11,9 @@ archer:
   name: Sterling Archer
   email: duchess@example.gov
   password_digest: <%= User.digest('password') %>
-
+  self_introduction: hello!
+  admin: false
+  
 lana:
   id: 3
   name: Lana Kane

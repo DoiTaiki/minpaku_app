@@ -15,10 +15,13 @@ Rails.application.routes.draw do
       get 'all_users'
     end
   end
-  resources :rooms, only: [:new, :create, :show, :edit, :update, :destroy] do
+  resources :rooms do
     collection do
       get 'posts'
       get 'search'
+    end
+    member do
+      delete 'destroy_by_admin'
     end
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

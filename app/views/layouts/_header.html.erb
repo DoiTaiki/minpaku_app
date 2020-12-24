@@ -35,6 +35,7 @@
                 <li><%= link_to "アカウントの削除", user_path, method: :delete, data: { confirm: "本当に削除しますか?" } %></li>
               <% else %>
                 <li><%= link_to "全てのユーザー", all_users_user_path %></li>
+                <li><%= link_to "全てのルーム", rooms_path %></li>
               <% end %>
           </ul>
         </li>

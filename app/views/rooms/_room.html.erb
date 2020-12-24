@@ -4,4 +4,7 @@
     <td><%= room.room_introduction %></td>
     <td><%= room.price %></td>
     <td><%= room.created_at %></td>
+    <% if !current_user.nil? && current_user.admin? %>
+        <td><%= link_to "削除", destroy_by_admin_room_path(room.id), method: :delete, data: { confirm: "本当に削除しますか？" } %></td>
+    <% end %>
 </tr>

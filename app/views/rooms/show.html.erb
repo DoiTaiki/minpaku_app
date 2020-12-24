@@ -20,3 +20,12 @@
       </div>
   </div>
 </div>
+
+<% if current_user.id == @room.user_id %>
+  <div class="edit-form">
+    <%= link_to "部屋情報を編集する", edit_room_path(@room.id) %> 
+  </div>
+  <div class="delete-room">
+    <%= link_to "登録した部屋を削除する", room_path(@room.id), method: :delete, data: { confirm: "本当に削除しますか?" } %>
+  </div>
+<% end %>
