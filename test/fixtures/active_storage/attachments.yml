@@ -18,6 +18,11 @@ most_recents_picture:
   record: most_recent(Room)
   blob: most_recents_picture_blob
   
+other_users_room_picture:
+  name: image
+  record: other_users_room(Room)
+  blob: other_users_rooms_picture_blob
+  
 #データベースに反映されず。(test/integration/rooms_posts_test.rbのassert_not_equal 0, @user.rooms.countで引っ掛かる。)
 #setupに直接記述して、代用
 #<% 30.times do |n| %>

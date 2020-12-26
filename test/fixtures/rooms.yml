@@ -31,6 +31,14 @@ most_recent:
   address: <%= Faker::Lorem.unique.sentence(word_count: 1) %>_city
   created_at: <%= Time.zone.now %>
   user: michael
+  
+other_users_room:
+  name: <%= Faker::Lorem.sentence(word_count: 1) %>
+  room_introduction: <%= Faker::Lorem.sentence(word_count: 1) %>
+  price: 5000
+  address: <%= Faker::Lorem.unique.sentence(word_count: 1) %>_city
+  created_at: <%= 2.hours.ago %>
+  user: archer
 
 #データベースに反映されず。(test/integration/rooms_posts_test.rbのassert_not_equal 0, @user.rooms.countで引っ掛かる。)
 #setupに直接記述して、代用

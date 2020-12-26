@@ -4,6 +4,10 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end
+  def setup
+    @user = users(:michael)
+  end
+  
   test "login with invalid information" do
     get sign_in_user_path
     assert_template 'users/sign_in'
@@ -12,10 +16,6 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     assert_not flash.empty?
     get root_path
     assert flash.empty?
-  end
-  
-  def setup
-    @user = users(:michael)
   end
   
   test "login with valid information followed by logout" do

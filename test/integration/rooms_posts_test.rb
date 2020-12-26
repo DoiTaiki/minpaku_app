@@ -4,7 +4,7 @@ class RoomsPostsTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end
-  
+
   def setup
     @user = users(:michael)
     31.times do |n|
