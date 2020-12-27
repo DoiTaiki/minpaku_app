@@ -24,5 +24,6 @@ Rails.application.routes.draw do
       delete 'destroy_by_admin'
     end
   end
+  resources :reservations, only: [:index, :create, :edit, :update, :destroy]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

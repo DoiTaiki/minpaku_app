@@ -96,4 +96,17 @@ class UserTest < ActiveSupport::TestCase
       @user.destroy
     end
   end
+  
+  test "associated reservations should be destroyed" do
+    @user.save
+    @user.reservations.create!( start_date: Faker::Date.between(from: '2020-11-23', to: '2020-11-30'),
+                                end_date: Faker::Date.between(from: '2020-12-01', to: '2020-12-10'),
+                                number_of_people: 2,
+                                room_id: rooms(:one).id )
+    assert_difference 'Reservation.count', -1 do
+      @user.destroy
+    end
+  end
+
+
 end

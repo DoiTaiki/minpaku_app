@@ -1,0 +1,13 @@
+<% room = Room.find_by(id: reservation.room_id) %>
+<% total_price = (reservation.end_date - reservation.start_date) / (60 * 60 * 24) * reservation.number_of_people * room.price %>
+<tr id="reservation-<%= reservation.id %>">
+    <td><%= link_to image_tag(room.display_image), room_path(room.id) %></td>
+    <td><%= link_to room.name, room_path(room.id) %></td>
+    <td><%= room.room_introduction %></td>
+    <td>¥<%= total_price.to_i %></td>
+    <td><%= reservation.start_date %></td>
+    <td><%= reservation.end_date %></td>
+    <td><%= reservation.created_at %></td>
+    <td><%= link_to "変更", edit_reservation_path(reservation) %></td>
+    <td><%= link_to "取り消し", reservation_path(reservation), method: :delete, data: { confirm: "本当に削除しますか？" } %></td>
+</tr>

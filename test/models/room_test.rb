@@ -7,6 +7,7 @@ class RoomTest < ActiveSupport::TestCase
   
   def setup
     @user = users(:michael)
+    @other_user = users(:archer)
     @room = @user.rooms.build(name: "A city's seaside", 
                               room_introduction: "beautiful seaside",
                               price: 2000,
@@ -77,5 +78,16 @@ class RoomTest < ActiveSupport::TestCase
   
   test "order should be most recent first" do
     assert_equal rooms(:most_recent), Room.first
+  end
+  
+  test "associated reservations should be destroyed" do
+    @room.save
+    @room.reservations.create!( start_date: Faker::Date.between(from: '2020-11-23', to: '2020-11-30'),
+                                end_date: Faker::Date.between(from: '2020-12-01', to: '2020-12-10'),
+                                number_of_people: 2,
+                                user_id: @other_user.id )
+    assert_difference 'Reservation.count', -1 do
+      @other_user.destroy
+    end
   end
 end

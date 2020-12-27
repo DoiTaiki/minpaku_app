@@ -1,5 +1,6 @@
 class Room < ApplicationRecord
   belongs_to :user
+  has_many :reservations, dependent: :destroy
   has_one_attached :image
   default_scope -> { order(created_at: :desc) }
   validates :user_id, presence: true
@@ -13,8 +14,8 @@ class Room < ApplicationRecord
                     size:         { less_than: 5.megabytes,
                                     message: "should be less than 5MB" }
   
-  def display_image
-    image.variant(resize_to_limit: [300, 300])
+  def display_image(height=300, width=300)
+    image.variant(resize_to_limit: [height, width])
   end
   
   def self.search(search_word, column)

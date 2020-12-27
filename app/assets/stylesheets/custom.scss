@@ -5,6 +5,7 @@
 
 body {
   padding-top: 60px;
+  margin: 15px;
   height: 100%;
 }
 
@@ -151,12 +152,12 @@ th {
     .search_form {
       position: absolute;
       width: 30%;
-      left: 35%;
+      left: 50%;
       top: 20%;
     }
     .message {
       position: absolute;
-      left: 35%;
+      left: 50%;
       top: 10%;
       color: #fff;
       font-size: 20px;
@@ -180,4 +181,8 @@ th {
       }
     }
   }
+}
+
+.room-image {
+  text-align: center;
 }

@@ -1,7 +1,7 @@
 <div class="home">
     <div class="top_image">
         <%= image_tag 'kyoto-1860521_640.jpg', size: '1000x500' %>
-        <div class="search_form">
+        <div class="search_form input-group">
           <%= form_with url: search_rooms_path, method: :get, local: true, class: "navbar-form input-group" do |f| %>
           <%= f.text_field :keyword, placeholder: "例）東京　新宿　-市街", class: 'form-control' %>
           <%= f.hidden_field :column, value: "address" %>

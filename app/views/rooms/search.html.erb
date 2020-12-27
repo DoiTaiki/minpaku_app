@@ -15,19 +15,22 @@
   <tr>
     <th width="25%">ルーム画像</th>
     <th width="10%">ルーム名</th>
-    <th width="45%">ルーム紹介</th>
+    <th width="40%">ルーム紹介</th>
     <th width="10%">料金</th>
     <th width="10%">掲載日時</th>
-  </tr>
+    <th width="5%">
+      <%= "削除" if !current_user.nil? && (current_user.admin? || current_user.id == room.user_id) %>
+    </th>
+</tr>
   <div class="search-results-rooms">
     <% if !@strict_searched_rooms.nil? %>
       <div class="strict_searched_rooms">
-        <%= render @strict_searched_rooms %>
+        <%= render @strict_searched_rooms %>　<%# _room.html.erbが呼び出される %>
       </div>
     <% end %>
     <% if !@searched_rooms.nil? %>
       <div class="searched_rooms">
-        <%= render @searched_rooms %>
+        <%= render @searched_rooms %>　<%# _room.html.erbが呼び出される %>
       </div>
     <% end %>
   </div>

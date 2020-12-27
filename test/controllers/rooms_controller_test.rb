@@ -53,11 +53,11 @@ class RoomsControllerTest < ActionDispatch::IntegrationTest
   test "should redirect create when not logged in" do
     assert_no_difference 'Room.count' do
       post rooms_path, params: { room: { name: Faker::Lorem.sentence(word_count: 1), 
-                                          room_introduction: Faker::Lorem.sentence(word_count: 1),
-                                          price: 1000,
-                                          address: Faker::Lorem.unique.sentence(word_count: 1) + "city",
-                                          image: {io: File.open('./test/fixtures/files/images/lake-192990_640.jpg'), filename: 'lake-192990_640.jpg'}
-                                          } }
+                                         room_introduction: Faker::Lorem.sentence(word_count: 1),
+                                         price: 1000,
+                                         address: Faker::Lorem.unique.sentence(word_count: 1) + "city",
+                                         image: {io: File.open('./test/fixtures/files/images/lake-192990_640.jpg'), filename: 'lake-192990_640.jpg'}
+                                         } }
     end
     assert_not flash.empty?
     assert_redirected_to sign_in_user_path
@@ -72,11 +72,11 @@ class RoomsControllerTest < ActionDispatch::IntegrationTest
   test "should redirect update when not logged in" do
     assert_no_difference 'Room.count' do
       patch room_path(@room), params: { room: { name: "update", 
-                                          room_introduction: "upadate",
-                                          price: 2000,
-                                          address: Faker::Lorem.unique.sentence(word_count: 1) + "city",
-                                          image: {io: File.open('./test/fixtures/files/images/lake-192990_640.jpg'), filename: 'lake-192990_640.jpg'}
-                                          } }
+                                        room_introduction: "upadate",
+                                        price: 2000,
+                                        address: Faker::Lorem.unique.sentence(word_count: 1) + "city",
+                                        image: {io: File.open('./test/fixtures/files/images/lake-192990_640.jpg'), filename: 'lake-192990_640.jpg'}
+                                        } }
     end
     assert_not flash.empty?
     assert_redirected_to sign_in_user_path

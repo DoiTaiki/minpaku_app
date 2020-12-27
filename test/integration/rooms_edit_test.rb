@@ -14,9 +14,9 @@ class RoomsEditTest < ActionDispatch::IntegrationTest
     get edit_room_path(@room)
     assert_template 'rooms/edit'
     patch room_path(@room), params: { room: { name: "",
-                                       room_introduction: "",
-                                       price: "",
-                                       address: "" } }
+                                              room_introduction: "",
+                                              price: "",
+                                              address: "" } }
     assert_template 'rooms/edit'
   end
   

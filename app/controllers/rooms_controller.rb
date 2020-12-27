@@ -13,18 +13,19 @@ class RoomsController < ApplicationController
 
   def create
     @room = current_user.rooms.build(room_params)
+    @room.image.attach(params[:room][:image])
     if @room.save
       flash[:success] = "部屋が登録されました！"
       redirect_to posts_rooms_path
     else
-      render 'rooms/new'
+      render 'new'
     end
   end
 
   def show
     @room = Room.find_by(id: params[:id])
     @user = User.find_by(id: @room.user_id)
-    #@reservation
+    @reservation = @room.reservations.build
   end
 
   def edit
@@ -65,8 +66,6 @@ class RoomsController < ApplicationController
       @searched_rooms = @searched_rooms.or(Room.search(keyword, column))
     end
     
-    #@searched_rooms = Room.search(keywords, column)
-    
     negative_keywords.each do |keyword|
       @searched_rooms = @searched_rooms.minus_search(keyword, column)
     end
@@ -93,7 +92,6 @@ class RoomsController < ApplicationController
     redirect_to rooms_path
   end
 
-  
   private
     def room_params
       params.require(:room).permit(:name, :room_introduction, :price, :address, :image)
