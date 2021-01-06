@@ -8,22 +8,21 @@ class RoomsPostsTest < ActionDispatch::IntegrationTest
   def setup
     @user = users(:michael)
     31.times do |n|
-      @room = @user.rooms.create!(name: Faker::Lorem.sentence(word_count: 1), 
+      @room = @user.rooms.create!(name: Faker::Lorem.sentence(word_count: 1),
                                   room_introduction: Faker::Lorem.sentence(word_count: 1),
                                   price: 1000,
                                   address: Faker::Lorem.unique.sentence(word_count: 1) + "city",
-                                  image: {io: File.open('./test/fixtures/files/images/lake-192990_640.jpg'), filename: 'lake-192990_640.jpg'}
-                                  )
+                                  image: { io: File.open('./test/fixtures/files/images/lake-192990_640.jpg'), filename: 'lake-192990_640.jpg' })
     end
   end
-  
+
   test "posts display" do
     log_in_as(@user)
     get posts_rooms_path
     assert_template 'rooms/posts'
     assert_match @user.rooms.count.to_s, response.body
     assert_not_equal 0, @user.rooms.count
-    assert_select 'div.pagination', count:2
+    assert_select 'div.pagination', count: 2
     @user.rooms.paginate(page: 1).each do |room|
       assert_select "a[href=?]", room_path(room.id), count: 2
       assert room.image.attached?

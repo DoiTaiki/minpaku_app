@@ -8,16 +8,18 @@ class DestroyUserTest < ActionDispatch::IntegrationTest
     @admin = users(:michael)
     @non_admin = users(:archer)
   end
-  
+
   test "should not allow the admin attribute to be edited via a web" do
     log_in_as(@non_admin)
     assert_not @non_admin.admin?
-    patch user_path, params: { user: { password:              "password",
-                                       password_confirmation: "password",
-                                       admin: true  } }
+    patch user_path, params: { user: {
+      password: "password",
+      password_confirmation: "password",
+      admin: true,
+    } }
     assert_not @non_admin.reload.admin?
   end
-  
+
   test "all_users including pagination and delete links" do
     log_in_as(@admin)
     get all_users_user_path
@@ -33,7 +35,7 @@ class DestroyUserTest < ActionDispatch::IntegrationTest
       delete "/user/#{@non_admin.id}/destroy_by_admin"
     end
   end
-  
+
   test "destroy my account by non-admin" do
     log_in_as(@non_admin)
     assert_difference 'User.count', -1 do
@@ -42,7 +44,7 @@ class DestroyUserTest < ActionDispatch::IntegrationTest
     assert_not flash.empty?
     assert_redirected_to root_path
   end
-  
+
   test "should redirect destroy and destroy_by_admin when admin destroy himself or herself" do
     log_in_as(@admin)
     assert_no_difference 'User.count' do

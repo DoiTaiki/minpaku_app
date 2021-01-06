@@ -10,7 +10,7 @@ class RoomsDestroyTest < ActionDispatch::IntegrationTest
     @room = rooms(:one)
     @other_room = rooms(:other_users_room)
   end
-  
+
   test "destroy my room by admin and non-admin" do
     log_in_as(@admin)
     assert_difference 'Room.count', -1 do

@@ -8,7 +8,7 @@ class ReservationDestroyTest < ActionDispatch::IntegrationTest
     @user = users(:michael)
     @reservation = reservations(:one)
   end
-  
+
   test "destroy my reservation" do
     log_in_as(@user)
     assert_difference 'Reservation.count', -1 do

@@ -8,17 +8,19 @@ class ReservationEditTest < ActionDispatch::IntegrationTest
     @user = users(:michael)
     @reservation = reservations(:one)
   end
-  
+
   test "unsuccessful edit" do
     log_in_as(@user)
     get edit_reservation_path(@reservation)
     assert_template 'reservations/edit'
-    patch reservation_path(@reservation), params: { reservation: { start_date: "",
-                                                                   end_date: "",
-                                                                   number_of_people: "" } }
+    patch reservation_path(@reservation), params: { reservation: {
+      start_date: "",
+      end_date: "",
+      number_of_people: "",
+    } }
     assert_template 'reservations/edit'
   end
-  
+
   test "successful edit with friendly forwarding" do
     get edit_reservation_path(@reservation)
     log_in_as(@user)
@@ -27,10 +29,11 @@ class ReservationEditTest < ActionDispatch::IntegrationTest
     start_date = Faker::Date.between(from: '2020-11-23', to: '2020-11-30')
     end_date = Faker::Date.between(from: '2020-12-01', to: '2020-12-10')
     number_of_people = Faker::Number.between(from: 1, to: 5)
-    patch reservation_path(@reservation), params: { reservation: { start_date: start_date,
-                                                                   end_date: end_date,
-                                                                   number_of_people: number_of_people
-                                                                   } }
+    patch reservation_path(@reservation), params: { reservation: {
+      start_date: start_date,
+      end_date: end_date,
+      number_of_people: number_of_people,
+    } }
     assert_not flash.empty?
     assert_redirected_to reservations_path
     follow_redirect!

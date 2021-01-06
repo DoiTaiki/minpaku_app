@@ -4,12 +4,12 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end
-  
+
   def setup
     @admin = users(:michael)
     @user = @non_admin = users(:archer)
   end
-  
+
   test "layouts links" do
     get root_path
     assert_template 'static_pages/home'
@@ -30,7 +30,7 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
     assert_select "a[href=?]", search_rooms_path(keyword: "京都", column: "address")
     assert_select "a[href=?]", search_rooms_path(keyword: "札幌", column: "address")
   end
-  
+
   test "should switch layout when logged in as admin or non-admin" do
     log_in_as(@admin)
     get root_path

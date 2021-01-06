@@ -1,21 +1,21 @@
 module UsersHelper
   def gravatar_for(user, options = { size: 80 })
     size = options[:size]
-    gravatar_id = Digest::MD5::hexdigest(user.email.downcase)
+    gravatar_id = Digest::MD5.hexdigest(user.email.downcase)
     gravatar_url = "https://secure.gravatar.com/avatar/#{gravatar_id}?s=#{size}"
     image_tag(gravatar_url, alt: user.name, class: "gravatar")
   end
-  
+
   def log_in(user)
     session[:user_id] = user.id
   end
-  
+
   def remember(user)
     user.remember
     cookies.permanent.signed[:user_id] = user.id
     cookies.permanent[:remember_token] = user.remember_token
   end
-  
+
   def current_user
     if (user_id = session[:user_id])
       @current_user ||= User.find_by(id: user_id)
@@ -27,33 +27,32 @@ module UsersHelper
       end
     end
   end
-  
+
   def current_user?(user)
     user && user == current_user
   end
-  
-  
+
   def logged_in?
     !current_user.nil?
   end
-  
+
   def forget(user)
     user.forget
     cookies.delete(:user_id)
     cookies.delete(:remember_token)
   end
-  
+
   def log_out
     forget(current_user)
     session.delete(:user_id)
     @current_user = nil
   end
-  
+
   def redirect_back_or(default)
     redirect_to(session[:forwarding_url] || default)
     session.delete(:forwarding_url)
   end
-  
+
   def store_location
     session[:forwarding_url] = request.original_url if request.get?
   end
