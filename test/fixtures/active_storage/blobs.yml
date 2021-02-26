@@ -1,0 +1,51 @@
+ones_picture_blob:
+  key: <%= ActiveStorage::Blob.generate_unique_secure_token %>
+  filename: 'lake-192990_640.jpg'
+  content_type: 'image/jpeg'
+  metadata: '{"identified":true, "analyzed":true}'
+  byte_size: <%= File.size('test/fixtures/files/images/lake-192990_640.jpg') %>
+  checksum: <%= Digest::MD5.file('test/fixtures/files/images/lake-192990_640.jpg').base64digest %>
+  
+twos_picture_blob:
+  key: <%= ActiveStorage::Blob.generate_unique_secure_token %>
+  filename: 'lake-192990_640.jpg'
+  content_type: 'image/jpeg'
+  metadata: '{"identified":true, "analyzed":true}'
+  byte_size: <%= File.size('test/fixtures/files/images/lake-192990_640.jpg') %>
+  checksum: <%= Digest::MD5.file('test/fixtures/files/images/lake-192990_640.jpg').base64digest %>
+
+threes_picture_blob:
+  key: <%= ActiveStorage::Blob.generate_unique_secure_token %>
+  filename: 'lake-192990_640.jpg'
+  content_type: 'image/jpeg'
+  metadata: '{"identified":true, "analyzed":true}'
+  byte_size: <%= File.size('test/fixtures/files/images/lake-192990_640.jpg') %>
+  checksum: <%= Digest::MD5.file('test/fixtures/files/images/lake-192990_640.jpg').base64digest %>
+  
+most_recents_picture_blob:
+  key: <%= ActiveStorage::Blob.generate_unique_secure_token %>
+  filename: 'lake-192990_640.jpg'
+  content_type: 'image/jpeg'
+  metadata: '{"identified":true, "analyzed":true}'
+  byte_size: <%= File.size('test/fixtures/files/images/lake-192990_640.jpg') %>
+  checksum: <%= Digest::MD5.file('test/fixtures/files/images/lake-192990_640.jpg').base64digest %>
+
+other_users_rooms_picture_blob:
+  key: <%= ActiveStorage::Blob.generate_unique_secure_token %>
+  filename: 'lake-192990_640.jpg'
+  content_type: 'image/jpeg'
+  metadata: '{"identified":true, "analyzed":true}'
+  byte_size: <%= File.size('test/fixtures/files/images/lake-192990_640.jpg') %>
+  checksum: <%= Digest::MD5.file('test/fixtures/files/images/lake-192990_640.jpg').base64digest %>
+
+#データベースに反映されず。(test/integration/rooms_posts_test.rbのassert_not_equal 0, @user.rooms.countで引っ掛かる。)
+#setupに直接記述して、代用
+#<% 30.times do |n| %>  
+#picture_<%= n %>_blob:
+  #key: <%= ActiveStorage::Blob.generate_unique_secure_token %>
+  #filename: 'lake-192990_640.jpg'
+  #content_type: 'image/jpeg'
+  #metadata: '{"identified":true, "analyzed":true}'
+  #byte_size: <%= File.size('test/fixtures/files/images/lake-192990_640.jpg') %>
+  #checksum: <%= Digest::MD5.file('test/fixtures/files/images/lake-192990_640.jpg').base64digest %>
+#<% end %>

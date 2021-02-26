@@ -1,0 +1,20 @@
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <%= form_with url: sign_in_user_path, scope: :session, local: true do |f| %>
+              
+          <%= f.label :email, "メール" %>
+          <%= f.text_field :email, class: 'form-control' %>
+              
+          <%= f.label :password, "パスワード" %>
+          <%= f.password_field :password, class: 'form-control' %>
+          
+          <%= f.label :remember_me, class: "checkbox inline" do %>
+            <%= f.check_box :remember_me %>
+            <span>永続的セッションを利用しますか？</span>
+          <% end %>
+
+          <%= f.submit "ログイン", class: "btn btn-primary" %>
+      <% end %>
+      <p><%= link_to "新しいアカウントを作成", user_sign_up_path %></p>
+    </div>
+</div>

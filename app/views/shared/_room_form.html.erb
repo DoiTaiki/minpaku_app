@@ -1,0 +1,18 @@
+<%= form_with model: @room, local: true do |f| %>
+  <%= render "shared/error_messages", object: f.object %>
+  <%= f.label :name, "部屋名" %>
+  <%= f.text_field :name, class: 'form-control' %>
+  
+  <%= f.label :room_introduction, "部屋の紹介" %>
+  <%= f.text_area :room_introduction, class: 'form-control' %>
+  
+  <%= f.label :price, "料金" %>
+  <%= f.number_field :price, class: 'form-control' %>
+  
+  <%= f.label :address, "住所" %>
+  <%= f.text_field :address, class: 'form-control' %></td>
+  
+  <%= f.label :image, "画像" %>
+  <%= f.file_field :image, class: 'form-control' %>
+  <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+<% end %>

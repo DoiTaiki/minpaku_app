@@ -1,0 +1,22 @@
+<h2>全ユーザーの登録済みルーム一覧</h2>
+<h3>登録物件数 (<%= @rooms.count %>)</h3>
+
+<%= will_paginate @rooms %>
+
+<table class="table" width="100%">
+  <tr>
+    <th width="35%">ルーム画像</th>
+    <th width="10%">ルーム名</th>
+    <th width="30%">ルーム紹介</th>
+    <th width="10%">料金</th>
+    <th width="10%">掲載日時</th>
+    <th width="5%">削除</th>
+  </tr>
+  <% if @rooms.any? %>
+    <ol class="rooms">
+      <%= render @rooms %>
+    </ol>
+  <% end %>
+</table>
+
+<%= will_paginate @rooms %>

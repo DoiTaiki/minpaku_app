@@ -1,0 +1,48 @@
+<header class="navbar navbar-fixed-top navbar-inverse">
+  <nav>
+    <ul class="nav navbar-nav navbar-left">
+      <li><%= link_to "MinpakuApp", root_path %></li>
+      <li>
+      <%= form_with url: search_rooms_path, method: :get, local: true, class: "navbar-form input-group" do |f| %>
+        <%= f.text_field :keyword, placeholder: "エリア", class: 'form-control' %>
+        <%= f.hidden_field :column, value: "address" %>
+        <%= f.submit :search, class: "form-control"%>
+      <% end %>
+      </li>
+      <li>
+      <%= form_with url: search_rooms_path, method: :get, local: true, class: "navbar-form input-group" do |f| %>
+        <%= f.text_field :keyword, placeholder: "キーワード", class: 'form-control' %>
+        <%= f.hidden_field :column, value: "room_introduction" %>
+        <%= f.submit :search, class: "form-control"%>
+      <% end %>
+      </li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <% if logged_in? %>
+        <li class="dropdown" >
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <%= gravatar_for(current_user, size: 40) %>
+          </a>
+          <ul class="dropdown-menu">
+              <li><%= link_to "ルーム登録", new_room_path %></li>
+              <li><%= link_to "予約済みルーム一覧", reservations_path %></li>
+              <li><%= link_to "登録済みルーム一覧", posts_rooms_path %></li>
+              <li><%= link_to "アカウント情報", user_account_path %></li>
+              <li>
+                <%= link_to "ログアウト", logout_user_path, method: :delete %>
+              </li>
+              <% if !current_user.admin? %>
+                <li><%= link_to "アカウントの削除", user_path, method: :delete, data: { confirm: "本当に削除しますか?" } %></li>
+              <% else %>
+                <li><%= link_to "全てのユーザー", all_users_user_path %></li>
+                <li><%= link_to "全てのルーム", rooms_path %></li>
+              <% end %>
+          </ul>
+        </li>
+      <% else %>
+        <li><%= link_to "ログイン", sign_in_user_path %></li>
+        <li><%= link_to "新規登録", user_sign_up_path %></li>
+      <% end %>
+    </ul>
+  </nav>
+</header>

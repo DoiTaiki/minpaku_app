@@ -1,0 +1,38 @@
+<% provide(:button_text, "予約する") %>
+<h2>部屋詳細</h2>
+<div class="row">
+  <div class="col-md-8">
+    <div class="room-image row">
+      <p><%= image_tag(@room.display_image(600, 600)) %></p>
+    </div>
+    
+    <div class="room-user row">
+      <p><%= gravatar_for @user %></p>
+      <p><%= @user.name %></p>
+      <p><%= @user.self_introduction %></p>
+    </div>
+    
+    <div class="room-introduction row">
+      <p><%= @room.room_introduction %><p>
+    </div>
+  </div>
+  <aside class="col-md-4">
+    <div class="reservation-form row">
+      <p><%= "¥#{@room.price}/日" %></p>
+          <div class="col-md-6 col-md-offset-3">
+              <p><%= render "shared/reservation_form" %></p>
+              <p><%= link_to "ホーム画面に戻る", root_path %></p>
+          </div>
+    </div>
+    
+    <% if !current_user.nil? && current_user.id == @room.user_id %>
+      <div class="edit-form row">
+        <p><%= link_to "部屋情報を編集する", edit_room_path(@room.id) %></p> 
+      </div>
+      <div class="delete-room row">
+        <p><%= link_to "登録した部屋を削除する", room_path(@room.id), method: :delete, data: { confirm: "本当に削除しますか?" } %></p>
+      </div>
+    <% end %>
+    
+  </aside>
+</div>
